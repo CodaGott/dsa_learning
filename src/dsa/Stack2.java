@@ -14,11 +14,19 @@ public class Stack2 {
         stack.push(4);
         stack.printCollection();
         System.out.println();
-        stack.pop();
-        stack.pop();
-        stack.pop();
-        stack.pop();
-        stack.pop();
+//        stack.pop();
+//        int pooped = stack.pop();
+//        stack.pop();
+//        stack.pop();
+//        stack.pop();
+
+        int search = stack.search(1);
+
+        System.out.println("Search "+search);
+
+        int peeked = stack.peek();
+
+        System.out.println(peeked);
     }
 
     public void printCollection(){
@@ -48,9 +56,24 @@ public class Stack2 {
             return -1;
         }
         int temp = stackCollection[top];
-        --top;
+        top--;
         return temp;
 
 
+    }
+
+    public int peek(){
+        return stackCollection[top];
+    }
+
+    public int search(int element){
+        int found = 0;
+        for (int j : stackCollection) {
+            if (element == j) {
+                return element;
+            } else
+                System.out.println("Not Found");
+        }
+        return -1;
     }
 }
