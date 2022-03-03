@@ -25,6 +25,18 @@ public class Queue {
     }
 
     public int removeFromQueue(){
-        if ()
+        if (firstElement == -1){
+            System.out.println("Queue is empty");
+            return -1;
+        }
+        if (firstElement == lastElement){
+            int temp = queue[lastElement];
+            firstElement = -1 ;
+            lastElement = -1;
+            return temp;
+        }
+        int deleteFromQueue = queue[firstElement];
+        firstElement++;
+        return deleteFromQueue;
     }
 }
