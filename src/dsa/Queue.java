@@ -5,6 +5,16 @@ public class Queue {
     int firstElement;
     int lastElement;
 
+    public static void main(String[] args) {
+        Queue queue = new Queue(4);
+
+        queue.addToQueue(3);
+        queue.addToQueue(4);
+        queue.addToQueue(5);
+        queue.addToQueue(6);
+        queue.printQueue();
+    }
+
     public Queue(int len){
         queue = new int[len];
         firstElement = -1;
@@ -15,13 +25,12 @@ public class Queue {
         if (lastElement == queue.length - 1){
             System.out.println("Queue is full");
         }
-
-        if (firstElement == -1){
-            firstElement = 0; lastElement = 0;
-            queue[0] = element;
+        else {
+            if (firstElement == -1)
+                firstElement = 0;
+                lastElement++;
+            queue[lastElement] = element;
         }
-        lastElement++;
-        queue[lastElement] = element;
     }
 
     public int removeFromQueue(){
@@ -38,5 +47,11 @@ public class Queue {
         int deleteFromQueue = queue[firstElement];
         firstElement++;
         return deleteFromQueue;
+    }
+
+    public void printQueue(){
+        for (int queues : queue){
+            System.out.println("Queue element: " + queues);
+        }
     }
 }
