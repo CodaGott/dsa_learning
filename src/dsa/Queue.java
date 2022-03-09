@@ -13,6 +13,9 @@ public class Queue {
         queue.addToQueue(5);
         queue.addToQueue(6);
         queue.printQueue();
+        queue.removeFromQueue();
+        System.out.println();
+        queue.printQueue();
     }
 
     public Queue(int len){
