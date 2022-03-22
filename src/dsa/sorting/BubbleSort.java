@@ -5,12 +5,13 @@ public class BubbleSort {
     private static int[] unsortedArray = {1000,58,6,9,60};
 
     public static void main(String[] args) {
+        BubbleSort bubbleSort = new BubbleSort();
 
-        sortArrays(unsortedArray);
-        printArray(unsortedArray);
+        bubbleSort.sortArrays(unsortedArray);
+        bubbleSort.printArray(unsortedArray);
     }
 
-    public static void sortArrays(int[] arrs){
+    public  void sortArrays(int[] arrs){
         for (int lastUnsortedIndex = arrs.length - 1; lastUnsortedIndex > 0; lastUnsortedIndex--){
             for (int i = 0; i < lastUnsortedIndex; i++) {
                 if (arrs[i] > arrs[i+ 1]){
@@ -20,7 +21,7 @@ public class BubbleSort {
         }
     }
 
-    public static void printArray(int[] arrays){
+    public void printArray(int[] arrays){
         for (int array : arrays) {
             System.out.println(array);
         }
