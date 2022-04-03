@@ -2,7 +2,7 @@ package dsa.sorting;
 
 public class BubbleSort {
 
-    private static int[] unsortedArray = {1000,58,6,9,60};
+    private static int[] unsortedArray = {1000,58,6,9,0, 1, 5,60};
 
     public static void main(String[] args) {
         BubbleSort bubbleSort = new BubbleSort();
@@ -11,14 +11,18 @@ public class BubbleSort {
         bubbleSort.printArray(unsortedArray);
     }
 
-    public  void sortArrays(int[] arrs){
-        for (int lastUnsortedIndex = arrs.length - 1; lastUnsortedIndex > 0; lastUnsortedIndex--){
-            for (int i = 0; i < lastUnsortedIndex; i++) {
-                if (arrs[i] > arrs[i+ 1]){
-                    swap(arrs, i, i + 1);
+    public int[] sortArrays(int[] arr){
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length -1; j++) {
+
+                if (arr[j] > arr[j + 1]){
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
         }
+        return arr;
     }
 
     public void printArray(int[] arrays){

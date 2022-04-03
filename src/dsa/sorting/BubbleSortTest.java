@@ -11,8 +11,7 @@ class BubbleSortTest {
     @Test
     void testItemIsSorted(){
         int[] unsortedArray = {1000,58,6,9,60};
-        bubbleSort.sortArrays(unsortedArray);
-        int sortedPosition = unsortedArray[0];
-        assertEquals(sortedPosition, 6);
+        int[] sortedArr = bubbleSort.sortArrays(unsortedArray);
+        assertEquals( sortedArr[0], 6);
     }
 }
