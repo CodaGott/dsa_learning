@@ -9,7 +9,7 @@ public class SelectSort {
         selectionSort(arrays);
 
         for(int arr : arrays){
-            System.out.println(arr);
+            System.out.print(arr + " ");
         }
     }
 

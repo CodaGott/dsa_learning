@@ -23,6 +23,9 @@ public class SelectionSort {
     }
 
     public static void swapElements(int[] arrays, int i, int j){
+        if(i == j){
+            return;
+        }
         int temp = arrays[i];
         arrays[i] = arrays[j];
         arrays[j] = temp;
