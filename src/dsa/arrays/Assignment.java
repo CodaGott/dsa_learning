@@ -15,8 +15,15 @@ public class Assignment {
 
 
     public static void main(String[] args) {
-        int[] arr = {2, 3, 4};
+        int[] arr = {3,2,1,0,4};
+//        int[] arr = {2,3,1,1,4};
         joinArray(arr);
+
+        int getThis = arr[arr.length - 1];
+
+        boolean jump = canJump(arr);
+
+        System.out.println(jump);
     }
 
     static void joinArray(int[] arr){
@@ -33,6 +40,17 @@ public class Assignment {
             }
         }
         System.out.println(Arrays.toString(joinedArr));
+    }
+
+    public static boolean canJump(int[] nums) {
+
+        for (int i = nums.length - 1; i >= 0; i--) {
+
+            if (i + nums[i] >= nums.length - 1) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
