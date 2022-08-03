@@ -126,4 +126,16 @@ public class GenericLinkedList<E> {
     }
 
 
+    public Boolean contains(E obj){
+        Node<E> current = head;
+        while (current != null){
+            if (((Comparable<E>)obj).compareTo(current.data)==0){
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+
 }
