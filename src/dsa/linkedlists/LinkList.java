@@ -3,6 +3,7 @@ package dsa.linkedlists;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+// TODO :: > > Linked-List with Generic Programing
 public class LinkList<E>{
 
     private Node<E> head;
@@ -58,13 +59,18 @@ public class LinkList<E>{
     }
 
     public void addFirst(E obj){
+        // This creates a node Obj.
         Node<E> node = new Node<E>(obj);
 
+        // We assume that a node is here already and to add another node,
+        // We assign the next node to be the head.
         node.next = head;
+        // then we make the new node the head.
         head = node;
 
         System.out.println(node.data);
 //        System.out.println("Head.data = " + head.data);
+        // we increase the size.
         currentSize++;
     }
 
