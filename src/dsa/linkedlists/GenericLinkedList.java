@@ -151,4 +151,13 @@ public class GenericLinkedList<E> {
         return tail.data;
     }
 
+
+    @Override
+    public String toString() {
+        return "GenericLinkedList{" +
+                "head=" + head +
+                ", tail=" + tail +
+                ", currentSize=" + currentSize +
+                '}';
+    }
 }
