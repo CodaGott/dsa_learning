@@ -137,5 +137,18 @@ public class GenericLinkedList<E> {
         return false;
     }
 
+    public E peekFirst(){
+        if (head == null){
+            return null;
+        }
+        return head.data;
+    }
+
+    public E peekLast(){
+        if (tail == null){
+            return null;
+        }
+        return tail.data;
+    }
 
 }
