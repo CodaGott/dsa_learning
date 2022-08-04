@@ -1,5 +1,8 @@
 package dsa.linkedlists;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class GenericLinkedList<E> {
 
     private Node<E> head;
@@ -159,5 +162,30 @@ public class GenericLinkedList<E> {
                 ", tail=" + tail +
                 ", currentSize=" + currentSize +
                 '}';
+    }
+
+    class IteratorHelper implements Iterator<E>{
+
+        Node<E> index;
+
+        public IteratorHelper(){
+            index = head;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return (index != null);
+        }
+
+        @Override
+        public E next() {
+            if (!hasNext()){
+                throw new NoSuchElementException("What you are looking for isn't here");
+            }
+            E val = index.data;
+
+            index = index.next;
+            return val;
+        }
     }
 }
