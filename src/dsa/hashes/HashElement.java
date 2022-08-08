@@ -1,4 +1,4 @@
-package dsa.hashes;
-
-public interface HashElement {
-}
+//package dsa.hashes;
+//
+//public interface HashElement {
+//}
