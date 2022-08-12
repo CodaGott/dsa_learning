@@ -2,9 +2,9 @@ package dsa;
 
 import dsa.linkedlists.LinkList;
 
-import java.util.NoSuchElementException;
+import java.util.Iterator;
 
-public class NewHash<K, V> {
+public class NewHash<K extends Comparable<K>, V> {
 
     private int numElements;
     private int tableSize;
@@ -44,7 +44,7 @@ public class NewHash<K, V> {
 
         // Resize the array
         if (loadFactor() > maxLoadFactor){
-            resize(tableSize * 2);
+            resize(tableSize);
         }
 
         // Create a new object to add
@@ -61,6 +61,28 @@ public class NewHash<K, V> {
         return true;
     }
 
+    private int loadFactor() {
+        return tableSize / hArray.length;
+    }
+
+    private void resize(int tableSize) {
+        LinkList<HashElement<K, V>> [] newArray =
+                (LinkList<HashElement<K,V>>[]) LinkList[tableSize];
+
+        for (int i = 0; i < tableSize; i++) {
+            newArray[i] = new LinkList<HashElement<K, V>>();
+        }
+
+        for (K key : this){
+            V val = getValue(key);
+            HashElement<K, V> hashElement = new HashElement<K, V>(key, val);
+            int hashVal = (key.hashCode() & 0x7777777) % tableSize;
+            newArray[hashVal].add(hashElement);
+        }
+        hArray = newArray;
+        this.tableSize = tableSize;
+    }
+
     public boolean remove(){
         int hashVal = hashCode();
         hashVal = hashVal & 0x7fffffff;
@@ -69,6 +91,39 @@ public class NewHash<K, V> {
         hArray[hashVal].removeFirst();
         numElements--;
         return true;
+    }
+
+    class IteratorHelper<T> implements Iterator<T>{
+
+        T[] keys;
+        int position;
+
+        public IteratorHelper(){
+            keys = (T[]) Object[numElements];
+            int p = 0;
+
+            for (int i = 0; i < tableSize; i++) {
+                LinkList<HashElement<K, V>> list = hArray[i];
+                for(HashElement<K, V> h : list){
+                    keys[p++] = (T) h.key;
+                }
+                position=0;
+            }
+        }
+
+
+        @Override
+        public boolean hasNext() {
+            return position < keys.length;
+        }
+
+        @Override
+        public T next() {
+            if (!hasNext()){
+                return null;
+            }
+            return keys[position++];
+        }
     }
 
     public V getValue(K key){
