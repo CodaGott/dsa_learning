@@ -180,6 +180,45 @@ public class RedBlackTree <K, V> implements RedBlackI<K, V>{
         }
     }
 
+    public int height(){
+        if (root == null){
+            return 0;
+        }
+        return height(root) -1;
+    }
+
+    public int height(Node<K, V> node){
+        if (node == null){
+            return 0;
+        }
+        int leftHeight = height(node.leftChild) + 1;
+        int rightHeight = height(node.rightChild) + 1;
+
+        if (leftHeight > rightHeight){
+            return leftHeight;
+        }
+        return rightHeight;
+    }
+
+    public int blackNodes(Node<K, V> node){
+        Node<K, V> temp;
+
+        if (node == null){
+            return 1;
+        }
+
+        int blackNodesRight = blackNodes(node.rightChild);
+        int blackNodesLeft = blackNodes(node.leftChild);
+
+        if (blackNodesLeft != blackNodesRight){
+            // throw some error
+        }
+        if (node.black){
+            blackNodesLeft++;
+        }
+        return blackNodesLeft;
+    }
+
 
     class Node<K, V>{
         K key;
